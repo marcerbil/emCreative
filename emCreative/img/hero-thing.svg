@@ -1,0 +1,17 @@
+<svg width="106px" height="122px" viewBox="0 -1 106 122" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.8.3 (29802) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M5,71.0029823 C5,70.4490505 5.36466023,69.7403495 5.81778029,69.4177125 L102.18222,0.802937181 C102.633867,0.481348661 103,0.65938131 103,1.21292376 L103,114.007726 C103,114.555744 102.552232,115 101.998138,115 L6.00186197,115 C5.44854888,115 5,114.554619 5,113.997018 L5,71.0029823 Z" id="path-1"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.2   0 0 0 0 0.2   0 0 0 0 0.2  0 0 0 0.245754076 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <polygon id="Rectangle-54" stroke="none" fill="#B6B2B2" fill-rule="evenodd" points="0 103 93 103 93 115 5 115"></polygon>
+    <g id="Rectangle-53-Copy" stroke="none" fill="none">
+        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+        <use fill="#E8E8E8" fill-rule="evenodd" xlink:href="#path-1"></use>
+    </g>
+</svg>
