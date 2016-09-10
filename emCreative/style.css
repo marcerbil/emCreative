@@ -40,21 +40,17 @@ body {
     z-index: 99;
 }
 
-.creativeworks {
-    margin-top: 70px;
-    margin-left: 4.5rem;
-    padding: 4rem 0;
-}
 
 /*  Navley
 /*========*/
 
 .navley {
     background-color: #FFFFFF;
-    padding-top: 1rem;
-    box-shadow: 1px 1px 4px 1px rgba(208, 208, 208, 0.4);
-    -webkit-box-shadow: 1px 1px 4px 1px rgba(208, 208, 208, 0.4);
-    border: none;
+    padding: 1rem 5rem 0;
+    /*box-shadow: 1px 1px 4px 1px rgba(208, 208, 208, 0.4);*/
+    /*-webkit-box-shadow: 1px 1px 4px 1px rgba(208, 208, 208, 0.4)*/
+    border-top: 1px solid #7a49a4;
+    border-bottom: none;
     height: 70px;
     z-index: 9999;
     -webkit-transition: all 200ms cubic-bezier(0.47, 0, 0.745, 0.715);
@@ -320,7 +316,7 @@ body {
 
 .mainfeature__carousel-pagination {
     bottom: -6rem;
-    left: 45%;
+    left: 40%;
 }
 
 .mainfeature__carousel-paginator {
@@ -368,119 +364,70 @@ body {
 }
 
 
-/* Category spinnner
-/*=================*/
+/* Stuff
+/*=====*/
 
-.spinner__container {
-    display: block;
-    margin-top: 50%;
-    margin-right: 3rem;
-    height: 500px;
+.stuff {
+    margin-top: 72px;
 }
 
-.spinner {
-
+.stuff__inner {
+    padding: 2rem 5rem;
 }
 
-.spinner__list {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    text-align: right;
+.stuff__masthead {
+    margin: 12rem auto;
 }
 
-.spinner__list-item {
-    margin-bottom: 2rem;
+.stuff__masthead-title {
+    font-size: 2.75rem;
     font-family: "niveau-grotesk", sans-serif;
-    font-size: 2rem;
-    letter-spacing: 0.4pt;
     color: #222222;
-}
-
-.separator {
-    position: absolute;
-    top: 1.5rem;
-    right: 1rem;
-}
-
-.separator__img {
-    height: 600px;
-}
-
-/* Split screen
-/*===========*/
-
-.splitscreen {
-    margin-top: 4rem;
-    height: 100%;
-    max-height: 500px;
-    overflow-y: scroll;
-}
-
-.splitscreen__title {
-    font-family: "niveau-grotesk", sans-serif;
-    font-size: 2rem;
+    text-align: center;
     font-weight: 400;
-    letter-spacing: 0.5pt;
+    letter-spacing: 0.4pt;
 }
 
-.splitscreen__list {
-    padding: 0;
-    margin: 3rem 0;
-    list-style-type: none;
+.stuff__masthead-hr {
+    display: block;
+    width: 5rem;
+    margin: 4rem auto 2rem;
+    border-color: #CCCCCC;
 }
 
-.splitscreen__list-item-anchor {
-    color: #222222;
-    text-decoration: none;
+.stuff__feed {
+    margin: 0 4rem;
 }
 
-.splitscreen__list-item-anchor:hover {
-    color: #222222;
-    text-decoration: none;
-}
-
-.splitscreen__list-item {
-    background-color: #FFFFFF;
+.stuff__item {
     position: relative;
-    height: 80px;
-    width: 700px;
-    padding: 2.6rem;
-    margin-bottom: 1rem;
-    border: 1px solid #f7f7f7;
-    border-radius: 1px;
-    font-family: "niveau-grotesk";
-    font-size: 1.4rem;
-    letter-spacing: 0.6pt;
-    font-weight: 100;
-    color: #222222;
-    -webkit-box-shadow: 1px 1px 4px 1px rgba(208, 208, 208, 0.2);
-    box-shadow: 1px 1px 4px 1px rgba(208, 208, 208, 0.2);
-    -webkit-transition: all 1s cubic-bezier(0.47, 0, 0.745, 0.715);
-    transition: all 1s cubic-bezier(0.47, 0, 0.745, 0.715);
+    overflow: hidden;
+    width: 240px;
+    height: 240px;
+    padding: 2rem;
+    background-color: #FFFFFF;
+    margin: 4rem auto;
+    opacity: 0.4;
+    -webkit-transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715) 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715) 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 
-.splitscreen__list-item-img {
-    display: inline-block;
-    position: absolute;
-    left: 0.8rem;
-    top: 0.6rem;
-    -webkit-box-shadow: 0px 2px 10px -1.5px rgba(144, 144, 144, 0.6);
-    box-shadow: 0px 2px 10px -1.5px rgba(144, 144, 144, 0.6);
+.stuff__item-content {
+    opacity: 1;
+    -webkit-transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715) 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715) 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 
-.splitscreen__list-item-text {
-    margin-left: 6.5rem;
-    border-left: 1px solid #f3f3f3;
-    padding: 0 2rem;
-    height: 100%;
+.stuff__item-title {
+
 }
 
-.splitscreen__blurrer {
-    position: absolute;
-    z-index: 99;
-    bottom: -10rem;
-    left: -2rem;
+.stuff__item-hr {
+
+}
+
+.stuff__item-date {
+
 }
 
 
@@ -507,8 +454,9 @@ body {
 
 .js__navley-active {
     opacity: 1;
-    border-top: 4px solid #7A49A4;
-    padding-top: 2.35rem;
+    padding-bottom: 0.25rem;
+    -webkit-box-shadow: 0 2px 0 0 rgba(34,34,34,0.2);
+    box-shadow: 0 2px 0 0 rgba(34,34,34,0.2);
     -webkit-transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
     transition: all 600ms cubic-bezier(0.47, 0, 0.745, 0.715);
 }
@@ -586,28 +534,12 @@ body {
     transition: all 2s cubic-bezier(0.47, 0, 0.745, 0.715)!important;
 }
 
-.js__splitscreenListItem--hover {
-    -webkit-box-shadow: 1px 1px 4px 1px rgba(208, 208, 208, 0.8);
-    box-shadow: 1px 1px 4px 1px rgba(208, 208, 208, 0.8);
-    -webkit-transition: all 400ms cubic-bezier(0.47, 0, 0.745, 0.715)!important;
-    transition: all 400ms cubic-bezier(0.47, 0, 0.745, 0.715)!important;
+.js__stuffFeedItem--hover {
+    opacity: 1;
+    -webkit-transition: all 1s cubic-bezier(0.47, 0, 0.745, 0.715);
+    transition: all 1s cubic-bezier(0.47, 0, 0.745, 0.715);
 }
 
-.js__splitscreenListItem--inactive {
-    -webkit-transition: all 400ms cubic-bezier(0.47, 0, 0.745, 0.715)!important;
-    transition: all 400ms cubic-bezier(0.47, 0, 0.745, 0.715)!important;
-}
-.js__splitscreenListItem--inactive::after {
-    display: block;
-    width: 100%;
-    height: 80px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: rgba(255, 255, 255, 0.8);
-    -webkit-transition: all 400ms cubic-bezier(0.47, 0, 0.745, 0.715)!important;
-    transition: all 400ms cubic-bezier(0.47, 0, 0.745, 0.715)!important;
-}
 
 /* Animations
 /*==============*/
@@ -718,6 +650,42 @@ body {
         -webkit-transform: rotate(0deg);
         transform-origin: center;
         -webkit-transform-origin: center;
+    }
+}
+
+@-webkit-keyframes splitscreenListItem--initial {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.3;
+    }
+}
+
+@keyframes splitscreenListItem--initial {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0.3;
+    }
+}
+
+@-webkit-keyframes splitscreenListItem--hover {
+    from {
+        opacity: 0.3;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes splitscreenListItem--hover {
+    from {
+        opacity: 0.3;
+    }
+    to {
+        opacity: 1;
     }
 }
 

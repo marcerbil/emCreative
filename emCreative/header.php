@@ -38,11 +38,8 @@
                     </a>
                 </div>
                 <ul class="navley__list animated-slower fadeIn">
-                    <a href="<?php bloginfo('url')?>/creativeworks/" alt="" class="navley__list-anchor">
-                        <li class="navley__list-item" id="creativeworksNavItem">creative works</li>
-                    </a>
-                    <a href="<?php bloginfo('url')?>/projects/" alt="" class="navley__list-anchor">
-                        <li class="navley__list-item" id="projectsNavItem">projects</li>
+                    <a href="<?php bloginfo('url')?>/stuff/" alt="" class="navley__list-anchor">
+                        <li class="navley__list-item" id="stuffNavItem">stuff</li>
                     </a>
                     <a href="<?php bloginfo('url')?>/blog/" alt="" class="navley__list-anchor">
                         <li class="navley__list-item" id="blogNavItem">blog</li>
@@ -64,11 +61,8 @@
 
         <div id="navlington" class="navlington js__hide">
             <ul class="navlington__list">
-                <a href="<?php bloginfo('url')?>/creativeworks/" alt="" class="navlington__list-anchor">
-                    <li id="creativeworksNavlingtonItem" class="navlington__list-item">creative works</li>
-                </a>
-                <a href="<?php bloginfo('url')?>/projects/" alt="" class="navlington__list-anchor">
-                    <li id="projectsNavlingtonItem" class="navlington__list-item">projects</li>
+                <a href="<?php bloginfo('url')?>/stuff/" alt="" class="navlington__list-anchor">
+                    <li id="stuffNavlingtonItem"class="navlington__list-item">stuff</li>
                 </a>
                 <a href="<?php bloginfo('url')?>/blog/" alt="" class="navlington__list-anchor">
                     <li id="blogNavlingtonItem"class="navlington__list-item">blog</li>

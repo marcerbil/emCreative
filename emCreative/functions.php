@@ -451,71 +451,43 @@ add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
 add_filter('show_admin_bar', '__return_false');
 
 // Add custom post types
-add_action( 'init', 'emcreative_project_type' );
-add_action( 'init', 'emcreative_creative_type' );
+add_action( 'init', 'emcreative_stuff_type' );
 
-// Project post type
-function emcreative_project_type() {
-  register_post_type( 'project',
+// Add thumbnail support
+add_theme_support( 'post-thumbnails' );
+set_post_thumbnail_size( 150, 150, true );
+
+
+// Stuff post type
+function emcreative_stuff_type() {
+  register_post_type( 'stuff',
     array(
-      'labels' => array(
-        'name' => __( 'Projects' ),
-        'singular_name' => __( 'Project' ),
-        'add_new' => __( 'Add new Project' ),
-        'edit_item' => __( 'Edit Project' ),
-        'new_item' => __( 'New Project' ),
-        'menu_name' => __( 'Projects' ),
-        'name_admin_bar' => __( 'Projects' )
+        'labels' => array(
+        'name' => __( 'Stuff' ),
+        'singular_name' => __( 'Thing' ),
+        'add_new' => __( 'Do a Thing' ),
+        'edit_item' => __( 'Edit Thing' ),
+        'new_item' => __( 'New Thing' ),
+        'menu_name' => __( 'Stuff' ),
+        'name_admin_bar' => __( 'Stuff' )
       ),
+      'supports' => array( 'title', 'editor', 'thumbnail' ),
       'menu_icon' => 'dashicons-share-alt',
       'menu_position' => '5',
       'public' => true,
-      'description' => 'Project post type. Use to create a project for inclusion in the projects page.'
+      'description' => 'Stuff post type. Use to create a thing for inclusion in the stuff page.'
     )
   );
 }
 
-add_action( 'init', 'emcreative_project_tax' );
+add_action( 'init', 'emcreative_stuff_tax' );
 
-function emcreative_project_tax() {
+function emcreative_stuff_tax() {
     register_taxonomy(
-        'project',
-        'project',
+        'stuff',
+        'stuff',
         array(
-            'label' => __( 'Projects tags' )
-        )
-    );
-}
-
-// Creative Work post type
-function emcreative_creative_type() {
-  register_post_type( 'creative',
-    array(
-      'labels' => array(
-        'name' => __( 'Creative Work' ),
-        'singular_name' => __( 'Creative Work' ),
-        'add_new' => __( 'New piece' ),
-        'edit_item' => __( 'Edit Creative Work' ),
-        'new_item' => __( 'New Creative Work' ),
-        'menu_name' => __( 'Creative Works' ),
-        'name_admin_bar' => __( 'Creative Work' )
-      ),
-      'menu_icon' => 'dashicons-art',
-      'menu_position' => '6',
-      'public' => true,
-      'description' => 'Creative Work post type. Use to create a creative work for inclusion in the creative works page.'
-    )
-  );
-}
-
-add_action( 'init', 'emcreative_creative_tax' );
-
-function emcreative_creative_tax() {
-    register_taxonomy(
-        'creative',
-        'creative',
-        array(
-            'label' => __( 'Creative works tags' )
+            'label' => __( 'Stuff tags' )
         )
     );
 }

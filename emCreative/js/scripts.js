@@ -44,42 +44,29 @@ var Pagely = {
 
     init: function() {
         console.log("Pagely loaded");
-
-        var body = document.body;
-        var homePage = document.getElementById( "homePage" );
-        var creativeworksPage = document.getElementById( "creativeworksPage" );
-        var projectsPage = document.getElementById( "projectsPage" );
-        var blogPage = document.getElementById( "blogPage" );
+        var body = document.body,
+        homePage = document.getElementById( "homePage" ),
+        stuffPage = document.getElementById( "stuffPage" ),
+        blogPage = document.getElementById( "blogPage" ),
+        blogNavlingtonItem = document.getElementById( "blogNavlingtonItem" )
+        stuffNavlingtonItem = document.getElementById( "stuffNavlingtonItem" );
 
         if ( homePage != null )  {
             body.classList.add( "js__hero-thing--noscroll" );
         }
 
-        if ( creativeworksPage != null ) {
-            creativeworksNavItem.classList.add( "js__navley-active" );
-            projectsNavItem.classList.remove( "js__navley-active" );
+        if ( stuffPage != null ) {
+            stuffNavItem.classList.add( "js__navley-active" );
             blogNavItem.classList.remove( "js__navley-active" );
-            creativeworksNavlingtonItem.classList.add( "js__navlington-active" );
-            projectsNavlingtonItem.classList.remove( "js__navlington-active" );
+            stuffNavlingtonItem.classList.add( "js__navlington-active" );
             blogNavlingtonItem.classList.remove( "js__navlington-active" );
-        }
-
-        if ( projectsPage != null ) {
-            projectsNavItem.classList.add( "js__navley-active" );
-            blogNavItem.classList.remove( "js__navley-active" );
-            creativeworksNavItem.classList.remove( "js__navley-active" );
-            projectsNavlingtonItem.classList.add( "js__navlington-active" );
-            blogNavlingtonItem.classList.remove( "js__navlington-active" );
-            creativeworksNavlingtonItem.classList.remove( "js__navlington-active" );
         }
 
         if ( blogPage != null ) {
             blogNavItem.classList.add( "js__navley-active" );
-            projectsNavItem.classList.remove( "js__navley-active" );
-            creativeworksNavItem.classList.remove( "js__navley-active" );
+            stuffNavItem.classList.remove( "js__navley-active" );
             blogNavlingtonItem.classList.add( "js__navlington-active" );
-            projectsNavlingtonItem.classList.remove( "js__navlington-active" );
-            creativeworksNavlingtonItem.classList.remove( "js__navlington-active" );
+            stuffNavlingtonItem.classList.remove( "js__navlington-active" );
         }
     }
 };
@@ -91,7 +78,10 @@ window.onload = function() {
 
     var $ = $ || jQuery;
     var body = document.body;
-    var navley = document.getElementById( "navley" ),
+    var homePage = document.getElementById( "homePage" ),
+        stuffPage = document.getElementById( "stuffPage" ),
+        blogPage = document.getElementById( "blogPage" ),
+        navley = document.getElementById( "navley" ),
         navlingtonOverlay = document.getElementById( "navlingtonOverlay" ),
         navlingtonOpenClose = document.getElementById( "navlingtonOpenClose" ),
         navlington = document.getElementById( "navlington" ),
@@ -107,9 +97,7 @@ window.onload = function() {
         mainFeatureOpen = false,
         mainfeatureContent = document.getElementById( "mainfeatureContent" ),
         mainfeatureInner = document.getElementById( "mainfeatureInner" ),
-        splitscreenListItems = document.querySelectorAll( ".js__splitscreenListItem" ),
-        index,
-        allExceptThisSplitscreenListItems = [];
+        stuffFeedItems = document.querySelectorAll( ".stuff__item" );
 
     Navley.init();
     Pagely.init();
@@ -148,7 +136,6 @@ window.onload = function() {
             menuOpen = true;
         }
     });
-
 
     if ( heroThing != null ) {
         // Hero thing listener
@@ -196,41 +183,21 @@ window.onload = function() {
         });
     }
 
-    if ( creativeworksPage != null ) {
-        function getSplitscreenListItems() {
-            for (var i = 0; i < splitscreenListItems.length; i++) {
-                allExceptThisSplitscreenListItems.push( splitscreenListItems[i] );
-            }
-        }
-
-        for (var i = 0; i < splitscreenListItems.length; i++) {
-            // on hover remove item from array
-            // add active class to removed item
-            // and add inactive class to rest of array
-            splitscreenListItems[i].addEventListener( "mouseover", function( event ) {
-                getSplitscreenListItems();
-                index = allExceptThisSplitscreenListItems.indexOf(this);
-                if ( index > -1 ) {
-                    allExceptThisSplitscreenListItems.splice(index, 1);
-                }
-                for (var i = 0; i < allExceptThisSplitscreenListItems.length; i++) {
-                    allExceptThisSplitscreenListItems[i].classList.add( "js__splitscreenListItem--inactive" );
-                }
-                this.classList.add( "js__splitscreenListItem--hover" );
-                console.log(allExceptThisSplitscreenListItems);
+    if ( stuffPage != null ) {
+        var feedItem;
+        for (var i = 0; i < stuffFeedItems.length; i++) {
+            var feedItem = stuffFeedItems[i];
+            var feedContent = feedItem.childNodes[0].nextElementSibling;
+            console.log(feedContent);
+            feedItem.addEventListener( "mousenter", function() {
+                feedItem.classList.add( "js__stuffFeedItem--hover" );
+                feedContent.classList.add( "js__stuffFeedItem--hover" );
+            });
+            feedItem.addEventListener( "mouseleave", function() {
+                feedItem.classList.remove( "js__stuffFeedItem--hover" );
+                feedContent.classList.remove( "js__stuffFeedItem--hover" );
             });
 
-            splitscreenListItems[i].addEventListener( "mouseout", function( event ) {
-                getSplitscreenListItems();
-                index = allExceptThisSplitscreenListItems.indexOf(this);
-                if ( index > -1 ) {
-                    allExceptThisSplitscreenListItems.splice(index, 1);
-                }
-                for (var i = 0; i < allExceptThisSplitscreenListItems.length; i++) {
-                    allExceptThisSplitscreenListItems[i].classList.remove( "js__splitscreenListItem--inactive" );
-                }
-                this.classList.remove( "js__splitscreenListItem--hover" );
-            });
         }
     }
 
