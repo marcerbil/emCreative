@@ -60,9 +60,9 @@
         <div class="stuff__item">
             <div class="stuff__item-content">
                 <a href="$thing_permalink" alt="" class="stuff__item-anchor">
-                    $thing_thumbnail
-                    <h4 class="stuff__item-title">$title</h4>
-                    <hr class="stuff__item-hr" />
+                    <div class="stuff__item-header">
+                        <h4 class="stuff__item-title">$title</h4>
+                    </div>
                     <p class="stuff__item-date">$date_formatted</p>
                 </a>
             </div>
@@ -77,9 +77,9 @@ EOT;
         <div class="stuff__item">
             <div class="stuff__item-content">
                 <a href="$thing_permalink" alt="" class="stuff__item-anchor">
-                    $thing_thumbnail
-                    <h4 class="stuff__item-title">$title</h4>
-                    <hr class="stuff__item-hr" />
+                    <div class="stuff__item-header">
+                        <h4 class="stuff__item-title">$title</h4>
+                    </div>
                     <p class="stuff__item-date">$date_formatted</p>
                 </a>
             </div>
@@ -93,9 +93,9 @@ EOT;
         <div class="stuff__item">
             <div class="stuff__item-content">
                 <a href="$thing_permalink" alt="" class="stuff__item-anchor">
-                    $thing_thumbnail
-                    <h4 class="stuff__item-title">$title</h4>
-                    <hr class="stuff__item-hr" />
+                    <div class="stuff__item-header">
+                        <h4 class="stuff__item-title">$title</h4>
+                    </div>
                     <p class="stuff__item-date">$date_formatted</p>
                 </a>
             </div> <!-- /.stuff__item-content -->
