@@ -1,0 +1,27 @@
+# -----------------------------------------------------------------
+# .gitignore for WordPress
+# Bare Minimum Git
+# http://ironco.de/bare-minimum-git/
+# ver 20150227
+#
+# -----------------------------------------------------------------
+
+# ignore everything in the root except the "wp-content" directory.
+/*
+!emCreative/
+
+# ignore all files starting with .
+.*
+
+# track this file .gitignore (i.e. do NOT ignore it)
+!.gitignore
+
+# ignore all files that start with ~
+~*
+
+# ignore OS generated files
+.DS_Store
+
+# ignore specific
+twenty*/
+old/
