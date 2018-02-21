@@ -9,109 +9,96 @@
 ?>
 
 <div id="stuffPage" class="stuff animated fadeIn">
-    <div class="stuff__inner">
-        <div class="stuff__masthead">
-            <h1 class="stuff__masthead-title">Some stuff I have done</h1>
-            <hr class="stuff__masthead-hr" />
-        </div>
-        <div class="stuff__feed">
-            <div class="container-fluid">
-                <div class="row">
+    <div class="container-fluid">
+        <div class="row">
 
-                    <?php $args = array(
-                                'post_type'        => 'stuff',
-                                'orderby'          => 'date',
-                                'order'            => 'DESC',
-                                'posts_per_page'   => 12
-                            );
-                        $stuff_array = get_posts( $args );
-                        $counter = 0;
+            <!-- __LHS__ -->
+            <!-- Featured post / image -->
+            <div class="col-lg-6 stuff__left-side">
+                <div class="stuff__featured-image-container">
+                    <a href="#">
+                        <img id="featuredPost" class="stuff__featured-image" src="<?php get_template_directory_uri(); ?>/wp-content/themes/emCreative/img/featured-image.jpg" alt="Featured Post">
+                    </a>
+                </div>
+            </div> <!-- ./col-lg-6 -->
 
-                        function charLimiterWithEllipse( $title ) {
-                            $stripped_title = substr( $title, 0, 24 );
-                            $formatted_title = $stripped_title . "...";
-                            return $formatted_title;
+            <!-- __RHS__ -->
+            <!-- Post list -->
+            <div class="col-lg-6 stuff__right-side">
+                <div id="fullpage">
+                    <?php
+                        $args = array(
+                            'post_type'   => 'stuff',
+                            'numberposts' => 50
+                        );
+                        $posts_list = get_posts( $args );
+                        if ( $posts_list ) {
+                            foreach ($posts_list as $post) :
+                                setup_postdata( $post );
+                                $terms = get_the_terms( $post->ID, 'stuff' );
+                                $post_attachments = wp_get_attachment_image( $post->ID );
+                    ?>
+                    <?php
+                        function changeImage( $current_post ) {
+                            // TODO: Get the image for the current post
+                            //       and use it in an AJAX function to change
+                            //       the featuredImage
                         }
-
-                        foreach ($stuff_array as $thing) {
-                            // Save thumbnail
-                            $thing_id = $thing->ID;
-                            $thing_thumbnail = get_the_post_thumbnail( $thing_id, 'small' );
-
-                            // Save title
-                            $title = $thing->post_title;
-                            if ( strlen( $title ) > 24 ) {
-                                $title = charLimiterWithEllipse( $title );
-                            }
-
-                            // Save date
-                            $thing_date = $thing->post_date_gmt;
-                            $date = new DateTime($thing_date);
-                            $date_formatted = $date->format('d.m.y');
-
-                            // Save permalink
-                            $thing_permalink = get_permalink( $thing_id );
-
-                            // If grid item is at end of row, create
-                            //  a new row, otherwise output grid item
-                            if ( $counter % 3 === 0 & $counter !== 12 & $counter !== 0 ) {
-                                $thing_block = <<<EOT
-    <div class="col-lg-4">
-        <div class="stuff__item">
-            <div class="stuff__item-content">
-                <a href="$thing_permalink" alt="" class="stuff__item-anchor">
-                    <div class="stuff__item-header">
-                        <h4 class="stuff__item-title">$title</h4>
-                    </div>
-                    <p class="stuff__item-date">$date_formatted</p>
-                </a>
-            </div>
-        </div> <!--/.stuff__item -->
-    </div> <!--/.col-lg-4 -->
-</div> <!-- /.row -->
-<div class="row">
-EOT;
-                            } elseif ( $counter === 12 ) {
-                                $thing_block = <<<EOT
-    <div class="col-lg-4">
-        <div class="stuff__item">
-            <div class="stuff__item-content">
-                <a href="$thing_permalink" alt="" class="stuff__item-anchor">
-                    <div class="stuff__item-header">
-                        <h4 class="stuff__item-title">$title</h4>
-                    </div>
-                    <p class="stuff__item-date">$date_formatted</p>
-                </a>
-            </div>
-        </div> <!--/.stuff__item -->
-    </div> <!--/.col-lg-4 -->
-</div> <!-- /.row -->
-EOT;
-                            } elseif ( $counter % 3 !== 0 & $counter !== 12 ) {
-                                $thing_block = <<<EOT
-    <div class="col-lg-4">
-        <div class="stuff__item">
-            <div class="stuff__item-content">
-                <a href="$thing_permalink" alt="" class="stuff__item-anchor">
-                    <div class="stuff__item-header">
-                        <h4 class="stuff__item-title">$title</h4>
-                    </div>
-                    <p class="stuff__item-date">$date_formatted</p>
-                </a>
-            </div> <!-- /.stuff__item-content -->
-        </div> <!--/.stuff__item -->
-    </div> <!--/.col-lg-4 -->
-EOT;
-                            }
-                                echo $thing_block;
-                                $counter++;
-                        }
-
-                        wp_reset_postdata();
                     ?>
 
-                </div> <!-- /.row -->
-            </div> <!-- /.container-fluid -->
-        </div> <!-- /.stuff__ -->
-    </div> <!-- /.stuff__inner -->
+                    <!-- Post listing -->
+                    <a class="section stuff__post-listing-anchor" href="<?php the_permalink(); ?>">
+                        <div class="stuff__post-listing">
+                            <h3 id="postTitle" class="stuff__post-title">
+                                <?php the_title(); ?>
+                                <p class="stuff__post-category">
+                                    <?php
+                                        if ( $terms ) {
+                                            foreach( $terms as $term ) {
+                                              echo $term->name;
+                                            }
+                                        }
+                                    ?>
+                                </p>
+                            </h3>
+                            <p class="stuff__post-description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <img src="<?php get_template_directory_uri(); ?>/wp-content/themes/emCreative/img/down-arrow.png" class="stuff__post-arrow" alt="Down arrow - scroll down" />
+                        </div>
+                    </a>
+                    <!-- END: Post listing -->
+
+                    <?php
+                            endforeach;
+                            wp_reset_postdata();
+                        }
+                    ?>
+
+                    <!-- Filter -->
+                    <!-- <div class="stuff__filter-container">
+                        <ul class="stuff__filter-list">
+                            <li data-toggle="tooltip" data-placement="left" title="Dev" class="stuff__filter-list-item">
+                                <i class="fa fa-code"></i>
+                            </li>
+                            <li data-toggle="tooltip" data-placement="left" title="Design" class="stuff__filter-list-item">
+                                <i class="fa fa-eye"></i>
+                            </li>
+                            <li data-toggle="tooltip" data-placement="left" title="Art" class="stuff__filter-list-item">
+                                <i class="fa fa-paint-brush"></i>
+                            </li>
+                            <li data-toggle="tooltip" data-placement="left" title="Writing" class="stuff__filter-list-item">
+                                <i class="fa fa-align-left"></i>
+                            </li>
+                            <li data-toggle="tooltip" data-placement="left" title="Animation" class="stuff__filter-list-item">
+                                <i class="fa fa-caret-square-o-right"></i>
+                            </li>
+                        </ul>
+                    </div> -->
+
+                </div> <!-- #/fullpage -->
+            </div> <!-- ./col-lg-6 -->
+
+        </div> <!-- ./row -->
+    </div> <!-- /.container-fluid -->
 </div> <!-- /.stuff -->

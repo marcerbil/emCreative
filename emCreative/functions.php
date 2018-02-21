@@ -121,7 +121,7 @@ function twentysixteen_setup() {
 	 * This theme styles the visual editor to resemble the theme style,
 	 * specifically font, colors, icons, and column width.
 	 */
-	add_editor_style( array( 'css/editor-style.css', twentysixteen_fonts_url() ) );
+	// add_editor_style( array( 'css/editor-style.css', twentysixteen_fonts_url() ) );
 
 	// Indicate widget sidebars can use selective refresh in the Customizer.
 	add_theme_support( 'customize-selective-refresh-widgets' );
@@ -193,35 +193,35 @@ if ( ! function_exists( 'twentysixteen_fonts_url' ) ) :
  *
  * @return string Google fonts URL for the theme.
  */
-function twentysixteen_fonts_url() {
-	$fonts_url = '';
-	$fonts     = array();
-	$subsets   = 'latin,latin-ext';
-
-	/* translators: If there are characters in your language that are not supported by Merriweather, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Merriweather font: on or off', 'twentysixteen' ) ) {
-		$fonts[] = 'Merriweather:400,700,900,400italic,700italic,900italic';
-	}
-
-	/* translators: If there are characters in your language that are not supported by Montserrat, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Montserrat font: on or off', 'twentysixteen' ) ) {
-		$fonts[] = 'Montserrat:400,700';
-	}
-
-	/* translators: If there are characters in your language that are not supported by Inconsolata, translate this to 'off'. Do not translate into your own language. */
-	if ( 'off' !== _x( 'on', 'Inconsolata font: on or off', 'twentysixteen' ) ) {
-		$fonts[] = 'Inconsolata:400';
-	}
-
-	if ( $fonts ) {
-		$fonts_url = add_query_arg( array(
-			'family' => urlencode( implode( '|', $fonts ) ),
-			'subset' => urlencode( $subsets ),
-		), 'https://fonts.googleapis.com/css' );
-	}
-
-	return $fonts_url;
-}
+// function twentysixteen_fonts_url() {
+// 	$fonts_url = '';
+// 	$fonts     = array();
+// 	$subsets   = 'latin,latin-ext';
+//
+// 	/* translators: If there are characters in your language that are not supported by Merriweather, translate this to 'off'. Do not translate into your own language. */
+// 	if ( 'off' !== _x( 'on', 'Merriweather font: on or off', 'twentysixteen' ) ) {
+// 		$fonts[] = 'Merriweather:400,700,900,400italic,700italic,900italic';
+// 	}
+//
+// 	/* translators: If there are characters in your language that are not supported by Montserrat, translate this to 'off'. Do not translate into your own language. */
+// 	if ( 'off' !== _x( 'on', 'Montserrat font: on or off', 'twentysixteen' ) ) {
+// 		$fonts[] = 'Montserrat:400,700';
+// 	}
+//
+// 	/* translators: If there are characters in your language that are not supported by Inconsolata, translate this to 'off'. Do not translate into your own language. */
+// 	if ( 'off' !== _x( 'on', 'Inconsolata font: on or off', 'twentysixteen' ) ) {
+// 		$fonts[] = 'Inconsolata:400';
+// 	}
+//
+// 	if ( $fonts ) {
+// 		$fonts_url = add_query_arg( array(
+// 			'family' => urlencode( implode( '|', $fonts ) ),
+// 			'subset' => urlencode( $subsets ),
+// 		), 'https://fonts.googleapis.com/css' );
+// 	}
+//
+// 	return $fonts_url;
+// }
 endif;
 
 /**
@@ -243,7 +243,7 @@ add_action( 'wp_head', 'twentysixteen_javascript_detection', 0 );
  */
 function twentysixteen_scripts() {
 	// Add custom fonts, used in the main stylesheet.
-	wp_enqueue_style( 'twentysixteen-fonts', twentysixteen_fonts_url(), array(), null );
+	// wp_enqueue_style( 'twentysixteen-fonts', twentysixteen_fonts_url(), array(), null );
 
 	// Add Genericons, used in the main stylesheet.
 	wp_enqueue_style( 'genericons', get_template_directory_uri() . '/genericons/genericons.css', array(), '3.4.1' );
@@ -284,10 +284,10 @@ function twentysixteen_scripts() {
 		'collapse' => __( 'collapse child menu', 'twentysixteen' ),
 	) );
 
+    // Custom scripts
     wp_enqueue_script( 'bootstrapjs', get_template_directory_uri() . '/vendor/bootstrap-3.3.6-dist/js/bootstrap.min.js', array( 'jquery' ) );
-
-    wp_enqueue_script( 'jqueryeasing', get_template_directory_uri() . '/js/jquery.easing.1.3.js', array( 'jquery' ) );
-
+    wp_enqueue_script( 'jqueryeasing', get_template_directory_uri() . '/vendor/easing/jquery.easing.1.3.min.js', array( 'jquery' ) );
+    wp_enqueue_script( 'fullpage', get_template_directory_uri() . '/vendor/fullpage/jquery.fullpage.min.js', array( 'jquery' ) );
     wp_enqueue_script( 'customjs', get_template_directory_uri() . '/js/scripts.js', array( 'jquery' )  );
 }
 add_action( 'wp_enqueue_scripts', 'twentysixteen_scripts' );
@@ -452,6 +452,7 @@ add_filter('show_admin_bar', '__return_false');
 
 // Add custom post types
 add_action( 'init', 'emcreative_stuff_type' );
+add_action( 'init', 'emcreative_stuff_tax' );
 
 // Add thumbnail support
 add_theme_support( 'post-thumbnails' );
@@ -475,12 +476,9 @@ function emcreative_stuff_type() {
       'menu_icon' => 'dashicons-share-alt',
       'menu_position' => '5',
       'public' => true,
-      'description' => 'Stuff post type. Use to create a thing for inclusion in the stuff page.'
-    )
+      'description' => 'Stuff post type. Use to create a thing for inclusion in the stuff page.'    )
   );
 }
-
-add_action( 'init', 'emcreative_stuff_tax' );
 
 function emcreative_stuff_tax() {
     register_taxonomy(
